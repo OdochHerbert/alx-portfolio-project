@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandwidth Information</title>
+</head>
+<body>
+    <h1>Bandwidth Information</h1>
+    <div id="bandwidth-info"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://localhost:5009');
+
+        socket.on('bandwidth_info', function(data) {
+            document.getElementById('bandwidth-info').innerText = data;
+            console.log(data)
+        });
+
+        socket.emit('get_bandwidth_info');
+    </script>
+</body>
+</html>

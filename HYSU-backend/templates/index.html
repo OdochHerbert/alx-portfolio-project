@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Title Here</title>
+    <style>
+        /* Your CSS Styles Here */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Header Here</h1>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+        </ul>
+    </nav>
+<div id="flask-data" data-flask-data="{{ bandwidth_usage_json }}"></div>
+    <script>
+var flaskDataElement = document.getElementById('flask-data');
+    var flaskData = flaskDataElement.getAttribute('data-flask-data');
+    console.log(flaskData);  // This should display the JSON string
+
+    // Parse the JSON string
+    var parsedData = JSON.parse(flaskData);
+    console.log(parsedData);  // This should display the parsed JSON data
+
+    // Use the parsed data as needed in your JavaScript code
+
+
+</script>
+    <section>
+        <h2>Your Section Title Here</h2>
+        <p>Your section content goes here.</p>
+    </section>
+
+    <footer>
+        <p>Your footer content here</p>
+    </footer>
+
+    <!-- External script include example -->
+</body>
+</html>

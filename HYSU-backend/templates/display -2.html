@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Data Display</title>
+</head>
+<body>
+    <h1>Data retrieved from Flask backend:</h1>
+    <div id="output"></div>
+
+    <script>
+        const timeArray = [];
+        const receiveArray = [];
+        const transmitArray = [];
+
+        function fetchDataAndUpdateArrays() {
+            fetch('http://127.0.0.1:5007/get_network_data')
+                .then(response => {
+                    return response.clone().json();
+                })
+                .then(data => {
+                    console.log(data); // Log the retrieved data
+
+                    const outputDiv = document.getElementById('output');
+                    const outputText = data.output;
+
+                    outputDiv.innerText = outputText;
+
+                    // Update arrays
+                    const time = new Date().toLocaleTimeString();
+                    const receiveRate = data.rx;
+                    const transmitRate = data.tx;
+
+                    timeArray.push(time);
+                    receiveArray.push(receiveRate);
+                    transmitArray.push(transmitRate);
+
+                    // Log arrays
+                    console.log("Time Array:", timeArray);
+                    console.log("Receive Array:", receiveArray);
+                    console.log("Transmit Array:", transmitArray);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Fetch data immediately and update the arrays
+        fetchDataAndUpdateArrays();
+
+        // Fetch data and update the arrays every 13 seconds
+        setInterval(() => {
+            fetchDataAndUpdateArrays();
+        }, 13000);
+    </script>
+</body>
+</html>
+

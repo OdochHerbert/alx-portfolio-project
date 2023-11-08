@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSON Data Display</title>
+</head>
+<body>
+    <h1>Data retrieved from Flask backend:</h1>
+    <div id="output"></div>
+
+    <script>
+        fetch('http://127.0.0.1:5003/get_network_data')
+            .then(response => {
+                return response.clone().json();
+            })
+            .then(data => {
+                console.log(data); // Log the retrieved data
+
+                const outputDiv = document.getElementById('output');
+                const outputText = data.output;
+
+                outputDiv.innerText = outputText;
+
+                // Additional data can be displayed similarly using appropriate HTML elements
+                const rxData = data.rx + data.rx_unit;
+                const txData = data.tx + data.tx_unit;
+
+                const rxElement = document.createElement('p');
+                rxElement.innerText = `Received Data: ${rxData}`;
+                outputDiv.appendChild(rxElement);
+
+                const txElement = document.createElement('p');
+                txElement.innerText = `Transmitted Data: ${txData}`;
+                outputDiv.appendChild(txElement);
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+</body>
+</html>
+

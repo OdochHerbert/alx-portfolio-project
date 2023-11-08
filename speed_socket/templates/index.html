@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>WebSocket Speed Test</title>
+</head>
+
+<body>
+    <h1>WebSocket Speed Test Results</h1>
+    <ul id="speed-results"></ul>
+
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script>
+        var socket = io.connect('localhost:5001');
+
+        socket.on('speed', function (speedData) {
+            var speedResults = document.getElementById('speed-results');
+            var listItem = document.createElement('li');
+            listItem.appendChild(document.createTextNode(speedData));
+            speedResults.appendChild(listItem);
+        });
+    </script>
+</body>
+
+</html>
+
