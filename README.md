@@ -17,6 +17,8 @@ The application consists of a Flask backend that serves a RESTful API and a Reac
 
 
 ## Prerequisites
+
+
 Before running the application, ensure you have the following:
 - Python (version x.x.x)
 - Node.js and npm (for React development)
@@ -30,6 +32,8 @@ Before running the application, ensure you have the following:
 
 
   **Clone the repository:**
+
+  
    git clone https://github.com/OdochHerbert/alx-portfolio-project.git
    cd alx-portfolio-project.git/HYSU-backend
    Install Python dependencies for flask app. <0-server_api.app>
@@ -54,6 +58,8 @@ Before running the application, ensure you have the following:
      gunicorn -d --bind 0.0.0.0:5007 0-server_api:app
      cd frontend alx-portfolio-project.git/HYSU-frontend
      npm start
+
+     
     Open your browser and navigate to http://localhost:5000 to access the application.
 
     
